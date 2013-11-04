@@ -1,5 +1,6 @@
 # written by Jacob Pennock (www.jacobpennock.com)
 # based on WordPress Codex Search Plugin by Matthias Krok (www.welovewordpress.de)
+# modified by Nicholas Killen (11/3/2013)
 
 # available commands
 #   unity_reference_open_selection
@@ -11,6 +12,7 @@ import sublime_plugin
 
 import subprocess
 import webbrowser
+import httplib
 
 def SearchUnityScriptReferenceFor(text):
     url = 'http://docs.unity3d.com/Documentation/ScriptReference/30_search.html?q=' + text.replace(' ','%20')
@@ -39,7 +41,14 @@ class UnityReferenceOpenSelectionCommand(sublime_plugin.TextCommand):
                 text = text.replace('(','')
                 text = text[0].capitalize() + text[1:]
                 
-            OpenUnityFunctionReference(text)
+            urlBase = 'docs.unity3d.com'
+            urlTail = '/Documentation/ScriptReference/' + text.replace(' ','%20') + '.html'
+            urlRequest = httplib.HTTPConnection(urlBase)
+            urlRequest.request("HEAD", urlTail)
+            if urlRequest.getresponse().status < 400:
+                OpenUnityFunctionReference(text)
+            else:
+                SearchUnityScriptReferenceFor(text)
 
 class UnityReferenceSearchSelectionCommand(sublime_plugin.TextCommand):
     def run(self, edit):
