@@ -13,21 +13,13 @@ ctrl + shift + P and type `Unity`, or right click on any function and select 'Un
 
 You can also select 'Search Unity Reference' to search the whole reference for the selected text.
 
+Alternatively, you could create a custom key assignment in SublimeText.
+
 ## Install
-
-### Package Control
-
-The easiest way to install this is with [Package Control](http://wbond.net/sublime\_packages/package\_control).
-
- * If you just went and installed Package Control, you probably need to restart Sublime Text 2 before doing this next bit.
- * Bring up the Command Palette (Command+Shift+p on OS X, Control+Shift+p on Linux/Windows).
- * Select "Package Control: Install Package" (it'll take a few seconds)
- * Select Unity3D Script Reference when the list appears.
-
-Package Control will automatically keep Git up to date with the latest version.
-
-If you have some problems or improvements with it, contact me via GitHub.
-
+-- This version not available through Package Control. If you choose to use this version, you will have to update the Unity3DScriptReference.py contents from the version avaiable on Package Control.
 
 ## Author
 [Jacob Pennock](http://jacobpennock.com)
+
+## Modified by:
+Nicholas Killen 11/9/2013
